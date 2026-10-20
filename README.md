@@ -52,6 +52,13 @@
 - 滚动淡入 12/12 元素、JS 报错 0 条、1280 宽无横向溢出
 - 线上页与本地页首屏截图 sha256 相同；截图见上级目录 `shots/`
 
+2026-10-20 第三轮（可访问性 / 分享）：
+- 标题层级：IMA 三个 tab 里的 h4 全部改 h3（原来 h2→h4 跳级），页脚 h5 改 h2；两种标签的
+  CSS 选择器同步改（`.tile h3` / `.sitefoot h2` 显式写回字号、行高、字距，视觉不变）
+- 分享预览：加 canonical、og:type/site_name/locale/url/title/description、twitter:card=summary；
+  没有 og:image（站点是单文件自包含，仓库里没有图片资源，微信/QQ 会显示文字卡片而不是大图）
+- 键盘焦点：加 :focus-visible（深青 --teal-d 2px 环，offset 3px），把默认蓝环换掉但没取消可见性
+
 2026-10-20 第二轮（按复核意见修）：补 favicon（内联 SVG data URI）与 theme-color（浅色 #f5f8f9，
 不是深色）；英雄区去掉多余的 border-bottom（与 #features 的 border-top 叠成双线）；删掉重复的
 `#features{padding:96px 0}`（与 `.section` 同值）；≤720px 隐藏导航按钮并收窄间距；tab 指示条加

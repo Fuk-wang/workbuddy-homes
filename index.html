@@ -8,6 +8,16 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f9d8f'/%3E%3Cpath d='M9 10h5v12H9zm9 0h5v5h-5zm0 7h5v5h-5z' fill='%23fff'/%3E%3C/svg%3E">
 <title>WorkBuddy · 腾讯 AI Agent 桌面工作台（课程演示页）</title>
 <meta name="description" content="WorkBuddy 产品展示单页（课程练习用，非官方）：一句话下任务、十余款模型可选、ima 知识库对接、桌面端与手机 App 上手步骤，附 CodeBuddy Code 命令行参考。内容按官方文档整理。">
+<link rel="canonical" href="https://fuk-wang.github.io/workbuddy-homes/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WorkBuddy 展示页">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:url" content="https://fuk-wang.github.io/workbuddy-homes/">
+<meta property="og:title" content="WorkBuddy · 腾讯 AI Agent 桌面工作台（课程演示页）">
+<meta property="og:description" content="WorkBuddy 产品展示单页（课程练习用，非官方）：一句话下任务、十余款模型可选、ima 知识库对接、桌面端与手机 App 上手步骤，附 CodeBuddy Code 命令行参考。内容按官方文档整理。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WorkBuddy · 腾讯 AI Agent 桌面工作台（课程演示页）">
+<meta name="twitter:description" content="WorkBuddy 产品展示单页（课程练习用，非官方）：一句话下任务、十余款模型可选、ima 知识库对接、桌面端与手机 App 上手步骤，附 CodeBuddy Code 命令行参考。内容按官方文档整理。">
 <style>
 /* ============================================================
    WorkBuddy · 单页展示站（课程演示页）
@@ -350,8 +360,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
   box-shadow:var(--shadow);
 }
-.tile h4{font-size:15.5px; font-weight:700; display:flex; align-items:center; gap:9px}
-.tile h4 .k{font-family:var(--mono); font-size:12px; color:var(--teal-d); background:var(--teal-soft); border:1px solid rgba(15,157,143,.2); padding:2px 7px; border-radius:6px}
+.tile h3{margin:0; font-size:15.5px; font-weight:700; letter-spacing:normal; line-height:1.4; display:flex; align-items:center; gap:9px}
+.tile h3 .k{font-family:var(--mono); font-size:12px; color:var(--teal-d); background:var(--teal-soft); border:1px solid rgba(15,157,143,.2); padding:2px 7px; border-radius:6px}
 .checklist{list-style:none; padding:0; margin:16px 0 0; display:grid; gap:12px}
 .checklist li{display:flex; gap:11px; font-size:15px; color:var(--ink-2)}
 .checklist .tick{
@@ -493,7 +503,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   background:linear-gradient(140deg,var(--teal-2),var(--teal-d));
   box-shadow:0 4px 14px -6px rgba(20,184,166,.9);
 }
-.sitefoot h5{margin:26px 0 0; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:#93a2aa; font-weight:600}
+.sitefoot h2{margin:26px 0 0; font-size:12.5px; line-height:1.7; letter-spacing:.14em; text-transform:uppercase; color:#93a2aa; font-weight:600}
 .footlinks{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:9px; font-size:14.5px}
 .footlinks a{color:#b6c4ca; transition:color .22s var(--ease), transform .22s var(--ease); display:inline-block}
 .footlinks a:hover{color:#7fe3d6; transform:translateX(3px)}
@@ -532,6 +542,9 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 .src code{font-size:12.5px; color:var(--teal-d)}
 .acc-note{margin-top:36px}
 .acc-note + .acc{margin-top:20px}
+
+/* 键盘焦点：保留可见性，把默认蓝环换成与主题一致的深青色环 */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--teal-d); outline-offset:3px; border-radius:6px}
 
 /* ------------------------------------------------- 窄屏兜底（本页以桌面端为主） */
 @media (max-width:1080px){
@@ -715,7 +728,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
       <div class="panel is-active" id="panel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
         <div class="panel-in">
           <div class="tile">
-            <h4><span class="k">01</span>开始之前，先确认三件事</h4>
+            <h3><span class="k">01</span>开始之前，先确认三件事</h3>
             <ul class="checklist">
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>桌面端已登录 WorkBuddy</b>：客户端能正常启动、发起一轮对话（个人账号、企业账号都可以）。</span></li>
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>ima 里有可用的知识库</b>：个人版连接器用个人微信扫码授权；企业账号会同时看到「企业版」和「个人版」两个连接器，企业版走企业统一身份。</span></li>
@@ -723,7 +736,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
             </ul>
           </div>
           <div class="tile">
-            <h4><span class="k">检查</span>怎么确认已经就绪</h4>
+            <h3><span class="k">检查</span>怎么确认已经就绪</h3>
             <ul class="checklist">
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>「资料库 → ima 知识库」里能看到连接器，状态显示为「已连接」。</span></li>
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>知识库列表能读到库名，新建任务时在输入框上方的上传图标里能勾选到它。</span></li>
@@ -737,7 +750,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
       <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
         <div class="panel-in">
           <div class="tile">
-            <h4><span class="k">02</span>四步把知识库接进来</h4>
+            <h3><span class="k">02</span>四步把知识库接进来</h3>
             <ol class="steps">
               <li><span class="n">1</span><span class="txt"><b>打开资料库</b>左侧边栏点「资料库」，选择「ima 知识库」。</span></li>
               <li><span class="n">2</span><span class="txt"><b>扫码授权</b>点「立即前往授权」，用微信扫码登录 ima 并确认授权，连接状态会立即刷新。</span></li>
@@ -746,7 +759,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
             </ol>
           </div>
           <div class="tile">
-            <h4><span class="k">提示</span>这一步最容易出问题的地方</h4>
+            <h3><span class="k">提示</span>这一步最容易出问题的地方</h3>
             <ul class="checklist">
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>先授权、再加库、最后提问：顺序反了，这一轮回答不会带上知识库内容。</span></li>
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>企业版连接器不能在端内解绑（由企业统一管理）；个人版随时可以在 ima 知识库右上角 ⋯ →「解除绑定」。</span></li>
@@ -760,7 +773,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
       <div class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0">
         <div class="panel-in">
           <div class="tile">
-            <h4><span class="k">03</span>接通之后能得到什么</h4>
+            <h3><span class="k">03</span>接通之后能得到什么</h3>
             <p style="margin-top:14px;font-size:15px;color:var(--ink-2)">让回答落在你自己的<b>文档、截图素材</b>上——依据来自你放进知识库的东西，而不是模型的公开印象。</p>
             <div class="askgrid">
               <span>私有文档里的具体条款</span>
@@ -770,7 +783,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
             </div>
           </div>
           <div class="tile">
-            <h4><span class="k">对比</span>接与不接的区别</h4>
+            <h3><span class="k">对比</span>接与不接的区别</h3>
             <ul class="checklist">
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>不接知识库：只能回答公开常识，问到你自己的材料就开始含糊。</span></li>
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>接上知识库：答案落在你的素材里，还能顺着同一份材料继续追问。</span></li>
@@ -1056,7 +1069,7 @@ codebuddy <span class="arg">update</span></div>
         <p class="desc">WorkBuddy 产品展示单页，课程练习用，非官方。内容按 2026-10 的官方文档整理：桌面端安装与登录、十余款模型、ima 知识库对接，以及同团队 CodeBuddy Code 的命令行参考。</p>
       </div>
       <div>
-        <h5>页面导航</h5>
+        <h2>页面导航</h2>
         <ul class="footlinks">
           <li><a href="#hero" data-scroll>首页</a></li>
           <li><a href="#features" data-scroll>功能特性</a></li>
@@ -1066,7 +1079,7 @@ codebuddy <span class="arg">update</span></div>
         </ul>
       </div>
       <div>
-        <h5>说明</h5>
+        <h2>说明</h2>
         <ul class="footlinks">
           <li>非官方页面，与腾讯无隶属关系</li>
           <li>命令示例来自 CodeBuddy Code 官方 CLI 参考，页面不会执行</li>
