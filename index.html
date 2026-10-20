@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Workbuddy.homes · 支持多模型切换、可对接私有知识库的 AI 对话工具</title>
-<meta name="description" content="Workbuddy.homes —— 一款支持多模型切换、可对接私有知识库的 AI 对话工具。GUI + CLI 双入口，Windows / MacOS / Linux 跨平台。">
+<title>WorkBuddy · 腾讯 AI Agent 桌面工作台（课程演示页）</title>
+<meta name="description" content="WorkBuddy 产品展示单页（课程练习用，非官方）：一句话下任务、12 款模型可选、ima 知识库对接、桌面端与手机 App 上手步骤，附 CodeBuddy Code 命令行参考。内容按官方文档整理。">
 <style>
 /* ============================================================
-   Workbuddy.homes · 单页展示站
+   WorkBuddy · 单页展示站（课程演示页）
    风格：简约科技风（深灰 + 蓝绿），桌面端优先，纯静态离线可用
    本文件自包含：无 CDN、无外部字体、无外部图片，双击即可打开
    ============================================================ */
@@ -17,8 +17,9 @@
 :root{
   --ink:#1b2226;
   --ink-2:#39454c;
-  --muted:#6b7880;
-  --faint:#96a3aa;
+  /* 正文二级色 / 辅助色：在 #fff 与 #f5f8f9 上都 ≥ 4.5:1（WCAG AA 小字标准） */
+  --muted:#55636b;     /* 6.21 : 1 vs #fff · 5.82 : 1 vs #f5f8f9 */
+  --faint:#5f6d75;     /* 5.34 : 1 vs #fff · 5.01 : 1 vs #f5f8f9 */
 
   --bg:#f5f8f9;
   --panel:#ffffff;
@@ -427,7 +428,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   margin:0; padding:16px 18px 18px; overflow-x:auto;
   font-size:13.4px; line-height:1.85; color:#d7e3e7;
 }
-.codecard pre .c{color:#7d8d95}
+.codecard pre .c{color:#93a2aa}
 .codecard pre .cmd{color:#7fe3d6}
 .codecard pre .arg{color:#9ecbff}
 .codecard pre .str{color:#ffd7a1}
@@ -469,12 +470,15 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 .pmtable th{font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:600}
 .pmtable td:first-child{font-family:var(--mono); color:var(--teal-d); white-space:nowrap}
 .pmtable td.desc{color:var(--ink-2)}
+.pmtable code{font-family:var(--mono); font-size:12.8px; background:var(--bg); border:1px solid var(--line); padding:1px 5px; border-radius:5px; color:var(--ink-2); white-space:nowrap}
 .acc-inner .usage{
   margin-top:16px; padding:13px 15px; border-radius:11px;
   background:var(--gray); color:#d7e3e7; font-family:var(--mono); font-size:13.2px; line-height:1.8;
   overflow-x:auto;
+  /* 代码块是 div 而不是 pre：必须显式保留换行与缩进，否则注释和命令会被挤成一行 */
+  white-space:pre-wrap; word-break:break-word;
 }
-.acc-inner .usage .c{color:#7d8d95}
+.acc-inner .usage .c{color:#93a2aa}
 .acc-inner .usage .cmd{color:#7fe3d6}
 
 /* ============================================================
@@ -488,7 +492,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   background:linear-gradient(140deg,var(--teal-2),var(--teal-d));
   box-shadow:0 4px 14px -6px rgba(20,184,166,.9);
 }
-.sitefoot h5{margin:26px 0 0; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:#7d8d95; font-weight:600}
+.sitefoot h5{margin:26px 0 0; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:#93a2aa; font-weight:600}
 .footlinks{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:9px; font-size:14.5px}
 .footlinks a{color:#b6c4ca; transition:color .22s var(--ease), transform .22s var(--ease); display:inline-block}
 .footlinks a:hover{color:#7fe3d6; transform:translateX(3px)}
@@ -496,7 +500,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 .foot-bottom{
   margin-top:38px; padding-top:20px; border-top:1px solid rgba(255,255,255,.08);
   display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center;
-  font-size:13.5px; color:#7d8d95;
+  font-size:13.5px; color:#93a2aa;
 }
 .foot-bottom .copy{margin-left:auto}
 
@@ -516,6 +520,17 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   width:18px; height:18px; border-radius:50%; background:var(--teal); color:#062a26;
   display:grid; place-items:center; flex:0 0 auto;
 }
+
+/* ------------------------------------------------- 非官方声明条 / 来源行 */
+.stripe{background:var(--teal-soft); border-bottom:1px solid rgba(15,157,143,.22)}
+.stripe-in{display:flex; gap:11px; align-items:flex-start; padding:12px 0; color:var(--ink-2); font-size:13.5px; line-height:1.66}
+.stripe b{color:var(--ink)}
+.stripe .dot{flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:var(--teal); margin-top:8px}
+.stripe .mono{font-family:var(--mono); font-size:12.5px; color:var(--teal-d)}
+.src{margin-top:14px; font-size:12.5px; line-height:1.7; color:var(--faint); word-break:break-word}
+.src code{font-size:12.5px; color:var(--teal-d)}
+.acc-note{margin-top:36px}
+.acc-note + .acc{margin-top:20px}
 
 /* ------------------------------------------------- 窄屏兜底（本页以桌面端为主） */
 @media (max-width:1080px){
@@ -551,13 +566,13 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 <!-- ============================ 1. 顶部固定导航 ============================ -->
 <header class="topbar">
   <div class="container topbar-in">
-    <a class="brand" href="#hero"><span class="mark"></span>Workbuddy<span class="dot">.</span>homes</a>
+    <a class="brand" href="#hero"><span class="mark"></span>WorkBuddy</a>
     <nav class="navmenu" id="navmenu" aria-label="主导航">
       <a class="navlink is-active" href="#hero">首页</a>
       <a class="navlink" href="#features">功能特性</a>
       <a class="navlink" href="#ima">IMA知识库教程</a>
       <a class="navlink" href="#guide">使用指南</a>
-      <a class="navlink" href="#docs">开发者文档</a>
+      <a class="navlink" href="#docs">命令行参考</a>
     </nav>
     <a class="navcta" href="#guide" data-scroll>立即开始使用</a>
   </div>
@@ -565,28 +580,36 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 
 <main>
 
+<!-- ============================ 非官方声明（放在最前，避免把示例当官方文档） ============================ -->
+<div class="stripe">
+  <div class="container stripe-in">
+    <span class="dot" aria-hidden="true"></span>
+    <p><b>非官方演示页</b>：内容按 WorkBuddy / CodeBuddy 官方文档整理（2026-10-20 核对），产品与文档随时迭代，请以 <span class="mono">workbuddy.cn/docs</span> 为准。页面本身不执行任何命令，也不收集任何数据。</p>
+  </div>
+</div>
+
 <!-- ============================ 2. 首屏英雄区 ============================ -->
 <section class="hero" id="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="container hero-in">
     <div class="hero-copy">
-      <span class="badge"><span class="pulse"></span>多模型切换 · 私有知识库 · GUI / CLI 双入口</span>
-      <h1>Workbuddy.homes</h1>
-      <p class="sub">一款支持<b>多模型切换</b>、可对接<b>私有知识库</b>的 AI 对话工具。</p>
+      <span class="badge"><span class="pulse"></span>腾讯 WorkBuddy · AI Agent 桌面工作台</span>
+      <h1>WorkBuddy</h1>
+      <p class="sub">用一句话描述需求，它自己<b>规划、执行</b>，最后把<b>可验收的产物</b>交给你。桌面端 + 手机 App，模型可换，资料能接 <b>ima 知识库</b>。</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#guide" data-scroll>
-          立即开始使用
+          看看怎么上手
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
         </a>
-        <a class="btn-ghost" href="#ima" data-scroll>看看知识库怎么接
+        <a class="btn-ghost" href="#ima" data-scroll>知识库怎么接
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </a>
       </div>
       <div class="hero-meta">
-        <span><i></i>五家模型随手切换</span>
-        <span><i></i>桌面端 + 命令行</span>
-        <span><i></i>Windows · MacOS · Linux</span>
+        <span><i></i>12 款模型，含 Auto</span>
+        <span><i></i>桌面端 Windows / macOS</span>
+        <span><i></i>手机 App iOS / Android</span>
       </div>
     </div>
 
@@ -594,17 +617,17 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
     <div class="mock" aria-hidden="true">
       <div class="mock-bar">
         <span class="dots"><i></i><i></i><i></i></span>
-        <span>WorkBuddy · 桌面版</span>
+        <span>WorkBuddy · 桌面端 · 新建任务</span>
       </div>
       <div class="mock-body">
         <div class="mock-chips">
-          <span class="chip">DeepSeek ▾</span>
-          <span class="chip">CC_switch</span>
-          <span class="chip on">IMA · my-kb 已挂载</span>
+          <span class="chip">Auto ▾</span>
+          <span class="chip">@ sales-2026Q3.xlsx</span>
+          <span class="chip on">ima · 我的知识库</span>
         </div>
-        <div class="bubble user">项目复盘的结论是哪三条？</div>
-        <div class="bubble ai">依据 my-kb 中的 3 份文档：一是缓存命中率与前缀稳定性直接相关，二是……<span class="caret"></span></div>
-        <div class="cite">来源：ima / 复盘-2026Q2.pdf · 第 4 页</div>
+        <div class="bubble user">把这份销售数据做成分析报告，要带图表。</div>
+        <div class="bubble ai">已读取工作空间里的 sales-2026Q3.xlsx，生成报告并配了 3 张图表，结果在右侧「产物」里。<span class="caret"></span></div>
+        <div class="cite">产物：销售分析报告.docx · 概览 - 工作空间文件</div>
       </div>
     </div>
   </div>
@@ -615,8 +638,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow">Features</span>
-      <h2>四件事做到位：模型、入口、平台、扩展</h2>
-      <p>不用在多个客户端之间来回切换——模型、界面形态和常用扩展都收在同一个工作台里。</p>
+      <h2>四件事做到位：任务、终端、模型、资料</h2>
+      <p>不用在多个工具之间来回切——下任务、换模型、接资料都在同一个工作台里完成，结果落在可以直接交付的文件上。</p>
     </div>
 
     <div class="feat-grid">
@@ -624,10 +647,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <div class="ico">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
         </div>
-        <h3>多模型兼容</h3>
-        <p>同一套对话界面里直接切换模型，按任务挑最合适的那个，不用改配置重启。</p>
+        <h3>一句话下任务</h3>
+        <p>用自然语言描述需求，它自己拆步骤、动手做，结果放在右侧「产物」里，过程文件在工作空间可查。</p>
         <div class="tagrow">
-          <span class="tag">Mimo</span><span class="tag">Qwen</span><span class="tag">DeepSeek</span><span class="tag">GLM</span><span class="tag">Claude</span>
+          <span class="tag">新建任务</span><span class="tag">产物</span><span class="tag">工作空间</span>
         </div>
       </article>
 
@@ -635,10 +658,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <div class="ico">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg>
         </div>
-        <h3>双入口模式</h3>
-        <p>想要界面就用图形桌面版，想写进脚本就用命令行版——两边共享同一套配置和知识库。</p>
+        <h3>桌面端 + 手机</h3>
+        <p>电脑上干活，手机上接着看。App 有两种执行方式：云端沙箱直接跑，或远程操控你电脑上的 WorkBuddy。</p>
         <div class="tagrow">
-          <span class="tag">GUI 图形桌面版</span><span class="tag">CLI 命令行版</span>
+          <span class="tag">Windows</span><span class="tag">macOS</span><span class="tag">iOS / Android App</span>
         </div>
       </article>
 
@@ -646,10 +669,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <div class="ico">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"/></svg>
         </div>
-        <h3>跨平台支持</h3>
-        <p>三大桌面系统原生可用，配置与使用习惯保持一致，换机器不用重新学一遍。</p>
+        <h3>12 款模型可换</h3>
+        <p>输入栏点一下就能换模型，面板上标着能力标签（推理 / 视觉）和积分倍率；不确定选哪个就用默认的 Auto。</p>
         <div class="tagrow">
-          <span class="tag">Windows</span><span class="tag">MacOS</span><span class="tag">Linux</span>
+          <span class="tag">Auto</span><span class="tag">GLM-5.2</span><span class="tag">Kimi-K3</span><span class="tag">MiniMax-M3</span><span class="tag">DeepSeek-V4-Pro</span>
         </div>
       </article>
 
@@ -657,10 +680,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <div class="ico">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 00-2 2v3M15 4h3a2 2 0 012 2v3M9 20H6a2 2 0 01-2-2v-3M15 20h3a2 2 0 002-2v-3"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
-        <h3>内置扩展组件</h3>
-        <p>模型切换、素材整理与代码能力都以组件形式内置，需要时挂上即可，不必额外装插件。</p>
+        <h3>接你自己的资料</h3>
+        <p>通过连接器把 ima 知识库挂进来，回答引用你库里的文档；还能装 SkillHub 技能包、接飞书 / 钉钉 / 企微。</p>
         <div class="tagrow">
-          <span class="tag">CC_switch 模型切换</span><span class="tag">MagPie</span><span class="tag">OpenCodeX 代码模块</span>
+          <span class="tag">ima 知识库</span><span class="tag">SkillHub</span><span class="tag">连接器</span>
         </div>
       </article>
     </div>
@@ -691,18 +714,18 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
           <div class="tile">
             <h4><span class="k">01</span>开始之前，先确认三件事</h4>
             <ul class="checklist">
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>WorkBuddy 正常运行</b>：客户端能启动、能正常发起一轮对话。</span></li>
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>安装 ima 客户端并创建知识库</b>：在 ima 里新建知识库，把要用的文档、截图放进去。</span></li>
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>配置打通两者服务</b>：让 WorkBuddy 与 ima 建立连接，保证知识库能被读到。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>桌面端已登录 WorkBuddy</b>：客户端能正常启动、发起一轮对话（个人账号、企业账号都可以）。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>ima 里有可用的知识库</b>：个人版连接器用个人微信扫码授权；企业账号会同时看到「企业版」和「个人版」两个连接器，企业版走企业统一身份。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span><b>库里有内容</b>：知识库里已经放进了文档或截图——空库接进来，没有东西可引用。</span></li>
             </ul>
           </div>
           <div class="tile">
             <h4><span class="k">检查</span>怎么确认已经就绪</h4>
             <ul class="checklist">
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>ima 里能看到知识库条目，且条数不为 0。</span></li>
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>WorkBuddy 的「知识库」面板里能选到刚才那个 ima 知识库。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>「资料库 → ima 知识库」里能看到连接器，状态显示为「已连接」。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>知识库列表能读到库名，新建任务时在输入框上方的上传图标里能勾选到它。</span></li>
             </ul>
-            <div class="note">两项都成立，再进入「操作步骤」；否则先解决连接问题，后面导入会白做一遍。</div>
+            <div class="note">授权后 WorkBuddy 获得三项权限：查看你的知识库列表、查看或搜索库内资料、把文件加进任务或存回 ima。两项检查都成立再往下走。</div>
           </div>
         </div>
       </div>
@@ -711,19 +734,20 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
       <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
         <div class="panel-in">
           <div class="tile">
-            <h4><span class="k">02</span>三步把知识库接进来</h4>
+            <h4><span class="k">02</span>四步把知识库接进来</h4>
             <ol class="steps">
-              <li><span class="n">1</span><span class="txt"><b>打开文档</b>在 WorkBuddy 里打开要处理的文档，或直接进入对话窗口。</span></li>
-              <li><span class="n">2</span><span class="txt"><b>导入 ima 知识库</b>从知识库面板选择 ima 里建好的那个库，导入到当前会话。</span></li>
-              <li><span class="n">3</span><span class="txt"><b>Workbuddy 调用 ima 素材作为对话上下文</b>导入后正常提问即可，回答会引用库里的内容。</span></li>
+              <li><span class="n">1</span><span class="txt"><b>打开资料库</b>左侧边栏点「资料库」，选择「ima 知识库」。</span></li>
+              <li><span class="n">2</span><span class="txt"><b>扫码授权</b>点「立即前往授权」，用微信扫码登录 ima 并确认授权，连接状态会立即刷新。</span></li>
+              <li><span class="n">3</span><span class="txt"><b>把资料加进任务</b>新建任务时，在输入框上方的上传图标处打开 ima 知识库，勾选整个库或选文件后确定；也可以在资料库里选中文件「添加到任务」。</span></li>
+              <li><span class="n">4</span><span class="txt"><b>产物存回 ima</b>右侧「产物」里选中文件 →「上传到云端」→ 选 ima 知识库（个人 / 共享 / 订阅）。</span></li>
             </ol>
           </div>
           <div class="tile">
             <h4><span class="k">提示</span>这一步最容易出问题的地方</h4>
             <ul class="checklist">
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>先导入、再提问：顺序反了，这一轮回答不会带上知识库内容。</span></li>
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>素材越具体，回答越准：把关键文档和截图一起放进库，比只放一篇效果好。</span></li>
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>提问时写明出处范围（「只根据 my-kb 回答」），能明显减少跑题。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>先授权、再加库、最后提问：顺序反了，这一轮回答不会带上知识库内容。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>企业版连接器不能在端内解绑（由企业统一管理）；个人版随时可以在 ima 知识库右上角 ⋯ →「解除绑定」。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>提问时写明范围（比如「只根据这个库回答」），能明显减少跑题。</span></li>
             </ul>
           </div>
         </div>
@@ -734,7 +758,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <div class="panel-in">
           <div class="tile">
             <h4><span class="k">03</span>接通之后能得到什么</h4>
-            <p style="margin-top:14px;font-size:15px;color:var(--ink-2)">让 AI 基于你的<b>私有文档、截图素材</b>精准问答——回答的依据来自你自己放进知识库的东西。</p>
+            <p style="margin-top:14px;font-size:15px;color:var(--ink-2)">让回答落在你自己的<b>文档、截图素材</b>上——依据来自你放进知识库的东西，而不是模型的公开印象。</p>
             <div class="askgrid">
               <span>私有文档里的具体条款</span>
               <span>截图里的表格与数据</span>
@@ -746,9 +770,9 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
             <h4><span class="k">对比</span>接与不接的区别</h4>
             <ul class="checklist">
               <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>不接知识库：只能回答公开常识，问到你自己的材料就开始含糊。</span></li>
-              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>接上知识库：答案落在你的素材里，还能给出引用的文件出处。</span></li>
+              <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>接上知识库：答案落在你的素材里，还能顺着同一份材料继续追问。</span></li>
             </ul>
-            <div class="note">知识库只在你本机的 ima 里维护，WorkBuddy 是按需调用，不需要把文件搬到别处。</div>
+            <div class="note">知识库仍归 ima 管理：WorkBuddy 只在授权范围内读取、写入，不会把文件复制到别的地方。</div>
           </div>
         </div>
       </div>
@@ -771,30 +795,30 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
       <!-- 左：GUI -->
       <div class="pane reveal">
         <div class="pane-head">
-          <h3>GUI 图形桌面版</h3>
+          <h3>桌面端（图形界面）</h3>
           <span class="pill">面向普通用户</span>
         </div>
         <div class="pane-body">
-          <p class="lead">可视化窗口，全部操作靠鼠标完成：启动、选模型、挂知识库、开始对话。</p>
+          <p class="lead">官网下载安装包，微信扫码登录就能开工。Windows 64 位和 macOS（Apple 芯片 / Intel）都有安装包；Linux 目前没有官方版本。</p>
           <ol class="flow">
-            <li><span class="n">1</span><span class="txt"><b>下载并安装</b>选择对应系统的安装包，一路默认即可。</span></li>
-            <li><span class="n">2</span><span class="txt"><b>启动 WorkBuddy</b>打开桌面客户端，首次运行按向导完成基础设置。</span></li>
-            <li><span class="n">3</span><span class="txt"><b>选择模型</b>在模型下拉框里挑一个（Mimo / Qwen / DeepSeek / GLM / Claude）。</span></li>
-            <li><span class="n">4</span><span class="txt"><b>挂载知识库</b>打开「知识库」面板，导入 ima 里建好的库。</span></li>
-            <li><span class="n">5</span><span class="txt"><b>开始对话</b>直接在输入框提问，回答会引用你的私有素材。</span></li>
+            <li><span class="n">1</span><span class="txt"><b>下载安装包</b>官网 → 下载 → 选当前系统的版本；历史版本页也按版本列出 macOS（Apple 芯片 / Intel）与 Windows 64 位安装包。</span></li>
+            <li><span class="n">2</span><span class="txt"><b>运行安装包</b>双击后按引导选择安装用户（建议「仅为我安装」）和安装位置，完成后启动。</span></li>
+            <li><span class="n">3</span><span class="txt"><b>微信扫码登录</b>个人用户选个人登录，买了企业版的选企业登录，在浏览器里扫码完成验证。</span></li>
+            <li><span class="n">4</span><span class="txt"><b>新建任务</b>描述需求，可指定工作空间目录；用 @ 引用文件，Ctrl/Cmd + V 直接粘贴截图。</span></li>
+            <li><span class="n">5</span><span class="txt"><b>查看产物</b>结果在右侧窗口，「产物」里是交付文件，其他文件在「概览 - 工作空间文件」。</span></li>
           </ol>
-          <div class="note" style="margin-top:auto">全程不需要碰配置文件；换模型、换知识库都在界面上完成。</div>
+          <div class="note" style="margin-top:auto">全程不用碰配置文件：模型在输入栏的下拉里换，资料在「资料库」里接。</div>
         </div>
       </div>
 
       <!-- 右：CLI -->
       <div class="pane reveal">
         <div class="pane-head">
-          <h3>CLI 命令行版</h3>
-          <span class="pill">面向开发者</span>
+          <h3>命令行（CodeBuddy Code）</h3>
+          <span class="pill gray">面向开发者</span>
         </div>
         <div class="pane-body">
-          <p class="lead">和图形版共享同一份配置与知识库，适合写进脚本、批处理或 CI 流程。</p>
+          <p class="lead">先说清楚：<b>WorkBuddy 桌面工作台没有官方命令行接口</b>。腾讯的命令行工具是另一款产品 —— CodeBuddy Code（腾讯云代码助手），命令是 <span class="mono">codebuddy</span> / <span class="mono">cbc</span>，适合写进脚本和 CI。</p>
 
           <div class="codecard" data-copy>
             <div class="codecard-head">
@@ -804,22 +828,22 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
                 <span data-copy-label>一键复制</span>
               </button>
             </div>
-<pre><span class="c"># 启动交互式会话（默认模型）</span>
-<span class="cmd">workbuddy</span> chat
+<pre><span class="c"># 安装（需要 Node.js 18.20+）</span>
+npm <span class="arg">install</span> <span class="arg">-g</span> @tencent-ai/codebuddy-code
 
-<span class="c"># 指定模型发起对话</span>
-<span class="cmd">workbuddy</span> chat <span class="arg">--model</span> deepseek-chat
+<span class="c"># 启动交互式会话（也可以输入短名 cbc）</span>
+<span class="cmd">codebuddy</span>
 
-<span class="c"># 挂载 ima 知识库，让回答基于私有素材</span>
-<span class="cmd">workbuddy</span> kb attach ima <span class="arg">--name</span> my-kb
+<span class="c"># 单次提问，打印结果后退出</span>
+<span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"总结这个仓库的目录结构"</span>
 
-<span class="c"># 单次提问，结果可直接重定向到文件</span>
-<span class="cmd">workbuddy</span> ask <span class="str">"总结这份复盘文档的结论"</span> <span class="arg">--kb</span> my-kb
+<span class="c"># 管道：把日志直接喂进去</span>
+cat logs.txt | <span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"分析这些日志里的错误"</span>
 
-<span class="c"># 查看 / 切换当前模型（对应 CC_switch 组件）</span>
-<span class="cmd">workbuddy</span> model list
-<span class="cmd">workbuddy</span> model use qwen-max</pre>
+<span class="c"># 继续最近一次对话</span>
+<span class="cmd">codebuddy</span> <span class="arg">-c</span></pre>
           </div>
+          <div class="note">以上命令来自 <b>codebuddy.cn/docs/cli</b> 官方 CLI 参考（2026-10 版），复制到本机终端才有效；本页不会执行它们。</div>
         </div>
       </div>
 
@@ -831,132 +855,185 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 <section class="section" id="docs">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow">Developer Docs</span>
-      <h2>CLI 命令与参数</h2>
-      <p>点标题展开详情。下面每个命令都列出可用参数和一段调用示例，方便直接对照写脚本。</p>
+      <span class="eyebrow">CLI Reference</span>
+      <h2>CodeBuddy Code 命令与参数</h2>
+      <p>下面每一条都出自腾讯云 CodeBuddy 的官方 CLI 参考（2026-10 核对），不是编的示例。点标题展开参数表和调用示例。</p>
     </div>
+
+    <div class="note acc-note"><b>先把两个产品分开：</b>WorkBuddy 是桌面智能体工作台，图形界面，<b>没有官方 CLI</b>；CodeBuddy Code 是终端里的编程 Agent，命令是 <span class="mono">codebuddy</span> / <span class="mono">cbc</span>。两者账号与文档各自独立，别把它们当成同一个程序的两种用法。</div>
 
     <div class="acc" id="acc">
 
       <div class="acc-item open">
         <button class="acc-head" type="button" aria-expanded="true" aria-controls="acc-body-1">
-          <span class="cmd">workbuddy chat</span>
+          <span class="cmd">codebuddy</span>
           <span class="t">启动交互式会话</span>
           <span class="d">最常用的入口</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-body" id="acc-body-1" role="region">
           <div class="acc-inner"><div class="pad">
-            <p style="font-size:15px;color:var(--ink-2)">打开一个持续的多轮对话窗口，直到手动退出。图形版和命令行版共享同一个会话历史与配置。</p>
+<p style="font-size:15px;color:var(--ink-2)">在项目目录里开一个持续的对话窗口，直到手动退出。短名 <span class="mono">cbc</span> 和 <span class="mono">codebuddy</span> 是同一个命令。</p>
             <table class="pmtable">
               <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
               <tbody>
-                <tr><td>--model &lt;name&gt;</td><td class="desc">指定本轮使用的模型，如 deepseek-chat / qwen-max / glm-4 / claude-sonnet / mimo。</td></tr>
-                <tr><td>--kb &lt;name&gt;</td><td class="desc">挂载一个已配置的知识库作为对话上下文（如 ima 里的 my-kb）。</td></tr>
-                <tr><td>--config &lt;path&gt;</td><td class="desc">使用指定的配置文件启动，便于隔离不同项目的密钥与默认模型。</td></tr>
+                <tr><td>&lt;初始提示词&gt;</td><td class="desc">可选。带一句话直接开始，例如 <code>codebuddy "解释这个项目"</code>。</td></tr>
+                <tr><td>--model &lt;name&gt;</td><td class="desc">指定本次会话的模型，可写别名（如 sonnet、opus）或模型全名。</td></tr>
+                <tr><td>--add-dir &lt;path&gt;</td><td class="desc">额外允许访问的工作目录，可传多个路径。</td></tr>
+                <tr><td>-c, --continue</td><td class="desc">加载当前目录最近一次对话，接着上次继续。</td></tr>
               </tbody>
             </table>
-            <div class="usage"><span class="c"># 用 qwen-max 并挂上 my-kb 开始多轮对话</span>
-<span class="cmd">workbuddy</span> chat --model qwen-max --kb my-kb</div>
+            <div class="usage"><span class="c"># 进入项目目录后直接启动</span>
+<span class="cmd">codebuddy</span>
+
+<span class="c"># 带一句初始提示词，并指定模型</span>
+<span class="cmd">codebuddy</span> <span class="str">"解释这个项目的目录结构"</span> <span class="arg">--model</span> gpt-5
+
+<span class="c"># 接着最近一次对话继续</span>
+<span class="cmd">codebuddy</span> <span class="arg">-c</span></div>
+            <div class="src">来源：<code>codebuddy.cn/docs/cli/cli-reference</code> · <code>codebuddy.cn/docs/cli/README</code></div>
           </div></div>
         </div>
       </div>
 
       <div class="acc-item">
         <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-2">
-          <span class="cmd">workbuddy ask</span>
-          <span class="t">单次提问并输出结果</span>
+          <span class="cmd">codebuddy -p</span>
+          <span class="t">单次执行，打印后退出</span>
           <span class="d">脚本友好</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-body" id="acc-body-2" role="region">
           <div class="acc-inner"><div class="pad">
-            <p style="font-size:15px;color:var(--ink-2)">问一句、拿结果、进程退出，不进入交互模式；适合放进 shell 脚本或定时任务。</p>
+<p style="font-size:15px;color:var(--ink-2)">打印回答后退出，不进交互界面。脚本、CI、定时任务都走这条路；非交互模式下涉及读写文件或执行命令时，必须给一个明确的权限策略。</p>
             <table class="pmtable">
               <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
               <tbody>
-                <tr><td>&lt;prompt&gt;</td><td class="desc">要提问的文本，作为位置参数传入（建议加引号）。</td></tr>
-                <tr><td>--kb &lt;name&gt;</td><td class="desc">限定回答依据的知识库，回答只引用该库的内容。</td></tr>
-                <tr><td>-o, --output &lt;file&gt;</td><td class="desc">把结果写入文件，而不是打印到标准输出。</td></tr>
-                <tr><td>--json</td><td class="desc">以 JSON 输出，便于程序解析（含回答文本与引用来源）。</td></tr>
+                <tr><td>-p, --print</td><td class="desc">打印响应后退出，不进入交互模式。</td></tr>
+                <tr><td>--output-format</td><td class="desc">可选 text / json / stream-json；给程序解析时用 json。</td></tr>
+                <tr><td>--max-turns &lt;n&gt;</td><td class="desc">限制非交互模式下代理的轮次数，防止跑飞。</td></tr>
+                <tr><td>-y, --dangerously-skip-permissions</td><td class="desc">跳过大部分权限提示。它不是真正的全放行，HIGH / CRITICAL 级命令仍可能要求确认，谨慎使用。</td></tr>
               </tbody>
             </table>
-            <div class="usage"><span class="c"># 只要 my-kb 里的内容，结果存成文件</span>
-<span class="cmd">workbuddy</span> ask "列出文档里的三条结论" --kb my-kb -o result.md</div>
+            <div class="usage"><span class="c"># 单次提问，直接输出</span>
+<span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"总结 src 里每个模块的职责"</span>
+
+<span class="c"># JSON 输出，交给别的程序解析</span>
+<span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"检查类型错误"</span> <span class="arg">--output-format</span> json
+
+<span class="c"># 需要读文件时，非交互模式要显式给权限</span>
+<span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"为 utils.js 补单元测试"</span> <span class="arg">-y</span></div>
+            <div class="src">来源：<code>codebuddy.cn/docs/cli/cli-reference</code> · <code>codebuddy.cn/docs/cli/quickstart</code></div>
           </div></div>
         </div>
       </div>
 
       <div class="acc-item">
         <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-3">
-          <span class="cmd">workbuddy kb attach</span>
-          <span class="t">挂载 / 管理知识库</span>
-          <span class="d">对接 IMA 用这条</span>
+          <span class="cmd">cat file | codebuddy</span>
+          <span class="t">管道输入</span>
+          <span class="d">配合 Unix 工具</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-body" id="acc-body-3" role="region">
           <div class="acc-inner"><div class="pad">
-            <p style="font-size:15px;color:var(--ink-2)">把外部知识库接到 WorkBuddy 上。对接 ima 时，先确认 ima 客户端里已有建好的知识库。</p>
+<p style="font-size:15px;color:var(--ink-2)">像 grep 一样吃标准输入：日志、diff、提交历史都能直接喂进去，让它只输出结论。官方 README 把这一条列为 Unix 哲学的集成方式。</p>
             <table class="pmtable">
-              <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
+              <thead><tr><th>写法</th><th class="desc">说明</th></tr></thead>
               <tbody>
-                <tr><td>&lt;provider&gt;</td><td class="desc">知识库来源，目前对接 ima 客户端。</td></tr>
-                <tr><td>--name &lt;name&gt;</td><td class="desc">为挂载的知识库取一个本地名称，供 --kb 引用。</td></tr>
-                <tr><td>--list</td><td class="desc">列出已挂载的知识库及其来源。</td></tr>
-                <tr><td>--detach &lt;name&gt;</td><td class="desc">解除某个知识库的挂载。</td></tr>
+                <tr><td>cmd | codebuddy -p "…"</td><td class="desc">管道内容会成为提示词的上下文，配合 -p 使用。</td></tr>
+                <tr><td>cat file | codebuddy</td><td class="desc">不带 -p 也能读，但会进入交互界面，脚本里一般不需要。</td></tr>
               </tbody>
             </table>
-            <div class="usage"><span class="c"># 挂载 ima 知识库并命名为 my-kb，之后用 --kb my-kb 引用</span>
-<span class="cmd">workbuddy</span> kb attach ima --name my-kb
-<span class="cmd">workbuddy</span> kb attach --list</div>
+            <div class="usage"><span class="c"># 让它在提交历史里找问题</span>
+git log --oneline -30 | <span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"分析这些提交，找出可能的问题"</span>
+
+<span class="c"># 错误日志归类</span>
+cat error.log | <span class="cmd">codebuddy</span> <span class="arg">-p</span> <span class="str">"把这些错误归类，指出最可能的根因"</span></div>
+            <div class="src">来源：<code>codebuddy.cn/docs/cli/README</code>（Unix 集成示例）</div>
           </div></div>
         </div>
       </div>
 
       <div class="acc-item">
         <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-4">
-          <span class="cmd">workbuddy model</span>
-          <span class="t">查看与切换模型</span>
-          <span class="d">CC_switch</span>
+          <span class="cmd">codebuddy -c</span>
+          <span class="t">续接上一次会话</span>
+          <span class="d">上下文不丢</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-body" id="acc-body-4" role="region">
           <div class="acc-inner"><div class="pad">
-            <p style="font-size:15px;color:var(--ink-2)">对应内置的 CC_switch 组件：列出可选模型，或把当前默认模型换成另一个。</p>
+<p style="font-size:15px;color:var(--ink-2)">关掉终端之后，上下文还在：可以接着当前目录最近的一次会话，也可以按 session id 精确恢复某一次。</p>
             <table class="pmtable">
               <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
               <tbody>
-                <tr><td>list</td><td class="desc">列出全部可用模型及其供应方。</td></tr>
-                <tr><td>use &lt;name&gt;</td><td class="desc">把默认模型切换为指定模型，后续会话沿用。</td></tr>
-                <tr><td>--current</td><td class="desc">只打印当前默认模型，便于脚本读取。</td></tr>
+                <tr><td>-c, --continue</td><td class="desc">加载当前目录最近的一次对话。</td></tr>
+                <tr><td>-r, --resume &lt;id&gt;</td><td class="desc">按 session id 恢复指定会话，可同时带一句新提示。</td></tr>
               </tbody>
             </table>
-            <div class="usage"><span class="cmd">workbuddy</span> model list
-<span class="cmd">workbuddy</span> model use claude-sonnet</div>
+            <div class="usage"><span class="c"># 接着最近一次对话继续干活</span>
+<span class="cmd">codebuddy</span> <span class="arg">--continue</span> <span class="arg">-y</span>
+
+<span class="c"># 按 ID 精确恢复</span>
+<span class="cmd">codebuddy</span> <span class="arg">--resume</span> abc123 <span class="str">"把上次那个冲突解决掉"</span></div>
+            <div class="src">来源：<code>codebuddy.cn/docs/cli/cli-reference</code></div>
           </div></div>
         </div>
       </div>
 
       <div class="acc-item">
         <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-5">
-          <span class="cmd">workbuddy ext</span>
-          <span class="t">内置扩展组件管理</span>
-          <span class="d">MagPie / OpenCodeX</span>
+          <span class="cmd">/init · /model</span>
+          <span class="t">交互模式里的斜杠命令</span>
+          <span class="d">会话内使用</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="acc-body" id="acc-body-5" role="region">
           <div class="acc-inner"><div class="pad">
-            <p style="font-size:15px;color:var(--ink-2)">管理内置组件：MagPie（素材整理）与 OpenCodeX（代码模块）开关，以及组件状态查看。</p>
+<p style="font-size:15px;color:var(--ink-2)">这些是在 <span class="mono">codebuddy</span> 会话里敲的斜杠命令，不是终端命令——别在 shell 里直接输入。</p>
             <table class="pmtable">
-              <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
+              <thead><tr><th>命令</th><th class="desc">说明</th></tr></thead>
               <tbody>
-                <tr><td>list</td><td class="desc">列出内置组件及当前启用状态。</td></tr>
-                <tr><td>enable &lt;name&gt;</td><td class="desc">启用组件，如 magpie、opencodex、cc-switch。</td></tr>
-                <tr><td>disable &lt;name&gt;</td><td class="desc">关闭组件，关闭后不再出现在会话的工具列表里。</td></tr>
+                <tr><td>/init</td><td class="desc">初始化项目上下文。官方建议开局先跑一次，后续回答更贴项目结构。</td></tr>
+                <tr><td>/model</td><td class="desc">在当前会话里切换模型。</td></tr>
+                <tr><td>/config</td><td class="desc">打开设置，包括界面语言（想固定用中文回复就改这里）。</td></tr>
               </tbody>
             </table>
-            <div class="usage"><span class="cmd">workbuddy</span> ext list
-<span class="cmd">workbuddy</span> ext enable opencodex</div>
+            <div class="usage"><span class="c"># 进入 codebuddy 交互界面后输入</span>
+/init
+/model
+/config</div>
+            <div class="src">来源：<code>codebuddy.cn/docs/cli/quickstart</code> · 腾讯云文档「CodeBuddy CLI 登录与模型配置」</div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc-body-6">
+          <span class="cmd">codebuddy update</span>
+          <span class="t">安装与升级</span>
+          <span class="d">装完先跑 --version</span>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc-body" id="acc-body-6" role="region">
+          <div class="acc-inner"><div class="pad">
+<p style="font-size:15px;color:var(--ink-2)">Node.js 18.20 以上用 npm 全局安装；升级优先用内置的 <span class="mono">update</span>，它失败再用包管理器重装。</p>
+            <table class="pmtable">
+              <thead><tr><th>命令</th><th class="desc">说明</th></tr></thead>
+              <tbody>
+                <tr><td>--version</td><td class="desc">验证安装：输出版本号即装好了。</td></tr>
+                <tr><td>update</td><td class="desc">自动检测安装方式并更新到最新版。</td></tr>
+                <tr><td>cbc</td><td class="desc">codebuddy 的等价短命令。</td></tr>
+              </tbody>
+            </table>
+            <div class="usage"><span class="c"># 全局安装（npm / pnpm / yarn / bun 都行）</span>
+npm <span class="arg">install</span> <span class="arg">-g</span> @tencent-ai/codebuddy-code
+
+<span class="c"># 验证 + 升级</span>
+codebuddy <span class="arg">--version</span>
+codebuddy <span class="arg">update</span></div>
+            <div class="src">来源：<code>codebuddy.cn/docs/cli/installation</code> · <code>codebuddy.cn/docs/cli/README</code></div>
           </div></div>
         </div>
       </div>
@@ -972,8 +1049,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand"><span class="mark"></span>Workbuddy.homes</div>
-        <p class="desc">一款支持多模型切换、可对接私有知识库的 AI 对话工具。GUI 图形桌面版 + CLI 命令行版双入口，覆盖 Windows / MacOS / Linux。</p>
+        <div class="foot-brand"><span class="mark"></span>WorkBuddy</div>
+        <p class="desc">WorkBuddy 产品展示单页，课程练习用，非官方。内容按 2026-10 的官方文档整理：桌面端安装与登录、12 款模型、ima 知识库对接，以及同团队 CodeBuddy Code 的命令行参考。</p>
       </div>
       <div>
         <h5>页面导航</h5>
@@ -982,21 +1059,22 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
           <li><a href="#features" data-scroll>功能特性</a></li>
           <li><a href="#ima" data-scroll>IMA知识库教程</a></li>
           <li><a href="#guide" data-scroll>使用指南</a></li>
-          <li><a href="#docs" data-scroll>开发者文档</a></li>
+          <li><a href="#docs" data-scroll>命令行参考</a></li>
         </ul>
       </div>
       <div>
         <h5>说明</h5>
         <ul class="footlinks">
-          <li>本页为产品展示单页，离线可用</li>
-          <li>CLI 部分为文档示例，不能在网页里执行</li>
-          <li>命令复制后请在本机终端中使用</li>
+          <li>非官方页面，与腾讯无隶属关系</li>
+          <li>命令示例来自 CodeBuddy Code 官方 CLI 参考，页面不会执行</li>
+          <li>模型清单与界面会随版本变化，以官网为准</li>
+          <li>资料来源：workbuddy.cn/docs · codebuddy.cn/docs</li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year">2026</span> Workbuddy.homes · 保留所有权利</span>
-      <span class="copy">WorkBuddy · 单页展示站</span>
+      <span>© <span id="year">2026</span> WorkBuddy 课程演示页 · 非官方</span>
+      <span class="copy">静态单页 · 无外链资源 · 双击可离线打开</span>
     </div>
   </div>
 </footer>
@@ -1033,7 +1111,12 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
     scrollToSection(target);
     // 立即高亮（滚动监听随后会自动校正）
     setActive(href.slice(1), true);
-    if (history.replaceState) { history.replaceState(null, '', href); }
+    // file:// 打开时 origin 是 "null"，replaceState 会抛 SecurityError（控制台持续报错），所以先判断再兜底
+    try {
+      if (history.replaceState && location.protocol !== 'file:') {
+        history.replaceState(null, '', href);
+      }
+    } catch (err) { /* 忽略：地址栏不带 hash 不影响页内跳转 */ }
   });
 
   /* ---------------------------------------------- 2. 导航高亮 + 顶部进度条 */
