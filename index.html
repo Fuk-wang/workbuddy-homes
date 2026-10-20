@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f8f9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f9d8f'/%3E%3Cpath d='M9 10h5v12H9zm9 0h5v5h-5zm0 7h5v5h-5z' fill='%23fff'/%3E%3C/svg%3E">
 <title>WorkBuddy · 腾讯 AI Agent 桌面工作台（课程演示页）</title>
-<meta name="description" content="WorkBuddy 产品展示单页（课程练习用，非官方）：一句话下任务、12 款模型可选、ima 知识库对接、桌面端与手机 App 上手步骤，附 CodeBuddy Code 命令行参考。内容按官方文档整理。">
+<meta name="description" content="WorkBuddy 产品展示单页（课程练习用，非官方）：一句话下任务、十余款模型可选、ima 知识库对接、桌面端与手机 App 上手步骤，附 CodeBuddy Code 命令行参考。内容按官方文档整理。">
 <style>
 /* ============================================================
    WorkBuddy · 单页展示站（课程演示页）
@@ -142,7 +144,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 /* ============================================================
    2. 首屏英雄区
    ============================================================ */
-.hero{position:relative; overflow:hidden; padding:92px 0 104px; background:var(--panel); border-bottom:1px solid var(--line)}
+.hero{position:relative; overflow:hidden; padding:92px 0 104px; background:var(--panel)}
 .hero-grid,.hero-glow{position:absolute; inset:0; pointer-events:none}
 .hero-grid{
   background-image:
@@ -282,7 +284,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
 /* ============================================================
    3. 功能特性
    ============================================================ */
-#features{padding:96px 0}
 .feat-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; margin-top:46px}
 .card{
   position:relative; min-width:0;
@@ -542,7 +543,9 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
   .navmenu::-webkit-scrollbar{display:none}
 }
 @media (max-width:720px){
-  .section,#features{padding:70px 0}
+  .section{padding:70px 0}
+  .topbar-in{gap:12px}
+  .navcta{display:none}
   .feat-grid{grid-template-columns:minmax(0,1fr)}
   .hero{padding:64px 0 76px}
   .hero-actions{flex-direction:column; align-items:stretch}
@@ -607,7 +610,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         </a>
       </div>
       <div class="hero-meta">
-        <span><i></i>12 款模型，含 Auto</span>
+        <span><i></i>十余款模型，含 Auto</span>
         <span><i></i>桌面端 Windows / macOS</span>
         <span><i></i>手机 App iOS / Android</span>
       </div>
@@ -669,8 +672,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <div class="ico">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"/></svg>
         </div>
-        <h3>12 款模型可换</h3>
-        <p>输入栏点一下就能换模型，面板上标着能力标签（推理 / 视觉）和积分倍率；不确定选哪个就用默认的 Auto。</p>
+        <h3>十余款模型可换</h3>
+        <p>输入栏点一下就能换模型，面板上标着能力标签（推理 / 视觉）和积分倍率；不确定选哪个就用默认的 Auto。具体可选几款以客户端当前版本为准。</p>
         <div class="tagrow">
           <span class="tag">Auto</span><span class="tag">GLM-5.2</span><span class="tag">Kimi-K3</span><span class="tag">MiniMax-M3</span><span class="tag">DeepSeek-V4-Pro</span>
         </div>
@@ -700,7 +703,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
     </div>
 
     <div class="tabs reveal" role="tablist" aria-label="IMA 知识库对接教程">
-      <span class="tab-ink" id="tabInk" aria-hidden="true"></span>
+      <span class="tab-ink" id="tabInk" role="presentation" aria-hidden="true"></span>
       <button class="tab" id="tab-1" role="tab" aria-selected="true" aria-controls="panel-1">前置条件</button>
       <button class="tab" id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2">操作步骤</button>
       <button class="tab" id="tab-3" role="tab" aria-selected="false" aria-controls="panel-3">效果说明</button>
@@ -828,7 +831,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
                 <span data-copy-label>一键复制</span>
               </button>
             </div>
-<pre><span class="c"># 安装（需要 Node.js 18.20+）</span>
+<pre><span class="c"># 安装（需要 Node.js 18.20.8+）</span>
 npm <span class="arg">install</span> <span class="arg">-g</span> @tencent-ai/codebuddy-code
 
 <span class="c"># 启动交互式会话（也可以输入短名 cbc）</span>
@@ -878,7 +881,7 @@ cat logs.txt | <span class="cmd">codebuddy</span> <span class="arg">-p</span> <s
               <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
               <tbody>
                 <tr><td>&lt;初始提示词&gt;</td><td class="desc">可选。带一句话直接开始，例如 <code>codebuddy "解释这个项目"</code>。</td></tr>
-                <tr><td>--model &lt;name&gt;</td><td class="desc">指定本次会话的模型，可写别名（如 sonnet、opus）或模型全名。</td></tr>
+                <tr><td>--model &lt;name&gt;</td><td class="desc">指定本次会话的模型，要填模型 ID，如 <code>glm-5.2</code>、<code>deepseek-v4-pro</code>、<code>kimi-k3</code>、<code>minimax-m3</code>。官方帮助写明「请提供模型 ID」，没有 <code>sonnet</code> / <code>opus</code> 这类别名；具体可选项以 <code>/model</code> 面板或报错里列出的为准。</td></tr>
                 <tr><td>--add-dir &lt;path&gt;</td><td class="desc">额外允许访问的工作目录，可传多个路径。</td></tr>
                 <tr><td>-c, --continue</td><td class="desc">加载当前目录最近一次对话，接着上次继续。</td></tr>
               </tbody>
@@ -1050,7 +1053,7 @@ codebuddy <span class="arg">update</span></div>
     <div class="foot-grid">
       <div>
         <div class="foot-brand"><span class="mark"></span>WorkBuddy</div>
-        <p class="desc">WorkBuddy 产品展示单页，课程练习用，非官方。内容按 2026-10 的官方文档整理：桌面端安装与登录、12 款模型、ima 知识库对接，以及同团队 CodeBuddy Code 的命令行参考。</p>
+        <p class="desc">WorkBuddy 产品展示单页，课程练习用，非官方。内容按 2026-10 的官方文档整理：桌面端安装与登录、十余款模型、ima 知识库对接，以及同团队 CodeBuddy Code 的命令行参考。</p>
       </div>
       <div>
         <h5>页面导航</h5>
@@ -1203,6 +1206,8 @@ codebuddy <span class="arg">update</span></div>
 
   function initTabInk() {
     var active = tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0] || tabs[0];
+    // 初始就做 roving tabindex，否则加载后 3 个 tab 全在 Tab 序列里
+    tabs.forEach(function (t) { t.setAttribute('tabindex', t === active ? '0' : '-1'); });
     if (active) { moveInk(active); }
   }
   window.addEventListener('resize', initTabInk);
