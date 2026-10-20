@@ -675,7 +675,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 18px)}
         <h3>十余款模型可换</h3>
         <p>输入栏点一下就能换模型，面板上标着能力标签（推理 / 视觉）和积分倍率；不确定选哪个就用默认的 Auto。具体可选几款以客户端当前版本为准。</p>
         <div class="tagrow">
-          <span class="tag">Auto</span><span class="tag">GLM-5.2</span><span class="tag">Kimi-K3</span><span class="tag">MiniMax-M3</span><span class="tag">DeepSeek-V4-Pro</span>
+          <span class="tag">Auto</span><span class="tag">GLM-5.2</span><span class="tag">Kimi-K2.6</span><span class="tag">Hy3</span><span class="tag">DeepSeek-V4.1-Flash</span>
         </div>
       </article>
 
@@ -881,7 +881,7 @@ cat logs.txt | <span class="cmd">codebuddy</span> <span class="arg">-p</span> <s
               <thead><tr><th>参数</th><th class="desc">说明</th></tr></thead>
               <tbody>
                 <tr><td>&lt;初始提示词&gt;</td><td class="desc">可选。带一句话直接开始，例如 <code>codebuddy "解释这个项目"</code>。</td></tr>
-                <tr><td>--model &lt;name&gt;</td><td class="desc">指定本次会话的模型，要填模型 ID，如 <code>glm-5.2</code>、<code>deepseek-v4-pro</code>、<code>kimi-k3</code>、<code>minimax-m3</code>。官方帮助写明「请提供模型 ID」，没有 <code>sonnet</code> / <code>opus</code> 这类别名；具体可选项以 <code>/model</code> 面板或报错里列出的为准。</td></tr>
+                <tr><td>--model &lt;name&gt;</td><td class="desc">指定本次会话的模型，要填模型 ID，如 <code>glm-5.2</code>、<code>hy3</code>、<code>deepseek-v4.1-flash</code>、<code>kimi-k2.6</code>。官方帮助写明「请提供模型 ID」，没有 <code>sonnet</code> / <code>opus</code> 这类别名；ID 随版本与账号不同，以 <code>/model</code> 面板或报错里列出的为准。</td></tr>
                 <tr><td>--add-dir &lt;path&gt;</td><td class="desc">额外允许访问的工作目录，可传多个路径。</td></tr>
                 <tr><td>-c, --continue</td><td class="desc">加载当前目录最近一次对话，接着上次继续。</td></tr>
               </tbody>
@@ -890,7 +890,7 @@ cat logs.txt | <span class="cmd">codebuddy</span> <span class="arg">-p</span> <s
 <span class="cmd">codebuddy</span>
 
 <span class="c"># 带一句初始提示词，并指定模型</span>
-<span class="cmd">codebuddy</span> <span class="str">"解释这个项目的目录结构"</span> <span class="arg">--model</span> gpt-5
+<span class="cmd">codebuddy</span> <span class="str">"解释这个项目的目录结构"</span> <span class="arg">--model</span> glm-5.2
 
 <span class="c"># 接着最近一次对话继续</span>
 <span class="cmd">codebuddy</span> <span class="arg">-c</span></div>

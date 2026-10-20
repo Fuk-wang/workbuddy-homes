@@ -56,9 +56,12 @@
 不是深色）；英雄区去掉多余的 border-bottom（与 #features 的 border-top 叠成双线）；删掉重复的
 `#features{padding:96px 0}`（与 `.section` 同值）；≤720px 隐藏导航按钮并收窄间距；tab 指示条加
 role="presentation"；tab 初始即做 roving tabindex（箭头键处理本来就有，这次只补初始态）。
-文案：--model 参数说明改成「填模型 ID，如 glm-5.2 / deepseek-v4-pro / kimi-k3 / minimax-m3，
-没有 sonnet / opus 别名」；「12 款模型」全部改为「十余款模型（以客户端为准）」；
+文案：--model 参数说明改成「填模型 ID，没有 sonnet / opus 别名，以 /model 面板或报错列表为准」；
+「12 款模型」全部改为「十余款模型（以客户端为准）」；
 Node 版本写成 18.20.8+（官方包 bin/codebuddy 里的 minNode 常量就是这个值，18.0+ 的说法不成立）。
+模型 ID 举例一律取发行配置里真有的：glm-5.2 / hy3 / deepseek-v4.1-flash / kimi-k2.6
+（在 product.json 与 product.internal.json 两份 22/32 项配置里都存在）；原示例里的 gpt-5
+（裸名，配置里只有 gpt-5.4/5.5/5.6-*）已换掉。
 
 2026-10-20（改稿：换成 WorkBuddy / CodeBuddy 真实文档内容 + 排版与对比度修复）
 - 静态检查：标签闭合平衡、无重复 id、导航 5 个锚点全部有落点、aria-controls 全部命中、
